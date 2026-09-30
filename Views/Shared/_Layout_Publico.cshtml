@@ -1,0 +1,772 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prime Motors | Agência de Carros</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+          rel="stylesheet">
+
+    <style>
+
+        /* =========================
+                   CONFIGURAÇÕES GERAIS
+                ========================= */
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f6f8;
+            color: #212529;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* =========================
+                   NAVBAR
+                ========================= */
+
+        .navbar {
+            background-color: #111827;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white !important;
+        }
+
+            .navbar-brand span {
+                color: #e63946;
+            }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #e63946 !important;
+            }
+
+        /* =========================
+                   HERO
+                ========================= */
+
+        .hero {
+            min-height: 550px;
+            background: linear-gradient( rgba(0,0,0,0.65), rgba(0,0,0,0.65) ), url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+            .hero h1 {
+                font-size: 3.5rem;
+                font-weight: bold;
+            }
+
+            .hero p {
+                font-size: 1.25rem;
+                margin-top: 20px;
+            }
+
+        .btn-principal {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+            .btn-principal:hover {
+                background-color: #c92f3c;
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        /* =========================
+                   TÍTULOS
+                ========================= */
+
+        .titulo-secao {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+            .titulo-secao h2 {
+                font-weight: bold;
+            }
+
+            .titulo-secao span {
+                color: #e63946;
+            }
+
+        /* =========================
+                   FILTRO
+                ========================= */
+
+        .filtro-box {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+        }
+
+        /* =========================
+                   CARDS
+                ========================= */
+
+        .carro-card {
+            background: white;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: 0.3s;
+            height: 100%;
+        }
+
+            .carro-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            }
+
+        .carro-img {
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .carro-body {
+            padding: 22px;
+        }
+
+        .categoria {
+            display: inline-block;
+            background-color: #111827;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+
+        .carro-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        .descricao {
+            color: #6c757d;
+            min-height: 55px;
+        }
+
+        .informacoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+            .informacoes i {
+                color: #e63946;
+            }
+
+        .preco {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e63946;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+                   SOBRE
+                ========================= */
+
+        .sobre {
+            background-color: white;
+        }
+
+        .sobre-img {
+            width: 100%;
+            border-radius: 15px;
+        }
+
+        .sobre-texto {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+            .sobre-texto h2 {
+                font-weight: bold;
+                margin-bottom: 20px;
+            }
+
+            .sobre-texto span {
+                color: #e63946;
+            }
+
+        .beneficio {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+            .beneficio i {
+                color: #e63946;
+                font-size: 1.5rem;
+                margin-right: 12px;
+            }
+
+        /* =========================
+                   CONTATO
+                ========================= */
+
+        .contato {
+            background-color: #111827;
+            color: white;
+        }
+
+            .contato h2 {
+                font-weight: bold;
+            }
+
+        .contato-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+            .contato-item i {
+                font-size: 1.8rem;
+                color: #e63946;
+                margin-right: 15px;
+            }
+
+        /* =========================
+                   FOOTER
+                ========================= */
+
+        footer {
+            background-color: #0b0f19;
+            color: #adb5bd;
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+            footer span {
+                color: #e63946;
+            }
+
+        /* =========================
+                   BOTÃO WHATSAPP
+                ========================= */
+
+        .whatsapp {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            z-index: 999;
+            transition: 0.3s;
+        }
+
+            .whatsapp:hover {
+                transform: scale(1.1);
+                color: white;
+            }
+
+        /* =========================
+                   RESPONSIVIDADE
+                ========================= */
+
+        media (max-width: 768px) {
+            .hero
+
+        {
+            min-height: 500px;
+            padding: 30px 15px;
+        }
+
+        .hero h1 {
+            font-size: 2.3rem;
+        }
+
+        .hero p {
+            font-size: 1rem;
+        }
+
+        .carro-img {
+            height: 210px;
+        }
+
+        .navbar-nav .nav-link {
+            margin-left: 0;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- =========================
+         MENU
+    ========================= -->
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+
+        <div class="container">
+
+            <a class="navbar-brand" href="#">
+                Prime <span>Motors</span>
+            </a>
+
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">
+                            Início
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#carros">
+                            Carros
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">
+                            Sobre nós
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">
+                            Contato
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="AreaPublica" asp-action="Login">
+                            Login
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero" id="inicio">
+
+        <div class="container">
+
+            <h1>
+                Encontre o carro dos seus sonhos
+            </h1>
+
+            <p>
+                Qualidade, confiança e os melhores veículos para você.
+            </p>
+
+            <a href="#carros"
+               class="btn btn-principal mt-3">
+                Ver carros disponíveis
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CARROS
+    ========================= -->
+
+    @RenderBody()
+
+
+    <!-- =========================
+         SOBRE
+    ========================= -->
+
+    <section class="sobre py-5" id="sobre">
+
+        <div class="container">
+
+            <div class="row align-items-center g-5">
+
+                <div class="col-md-6">
+
+                    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1000&q=80"
+                         class="sobre-img"
+                         alt="Agência de carros">
+
+                </div>
+
+
+                <div class="col-md-6 sobre-texto">
+
+                    <h2>
+                        Sobre a <span>Prime Motors</span>
+                    </h2>
+
+                    <p>
+                        Somos uma agência especializada na venda de veículos
+                        novos e seminovos, oferecendo qualidade, segurança e
+                        transparência para nossos clientes.
+                    </p>
+
+                    <p>
+                        Nosso objetivo é ajudar você a encontrar o veículo
+                        ideal para suas necessidades e seu orçamento.
+                    </p>
+
+
+                    <div class="beneficio">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>
+                            Veículos revisados e selecionados
+                        </span>
+
+                    </div>
+
+
+                    <div class="beneficio">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>
+                            Atendimento personalizado
+                        </span>
+
+                    </div>
+
+
+                    <div class="beneficio">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>
+                            Segurança e transparência
+                        </span>
+
+                    </div>
+
+
+                    <div class="beneficio">
+
+                        <i class="bi bi-check-circle-fill"></i>
+
+                        <span>
+                            Excelentes condições de pagamento
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTATO
+    ========================= -->
+
+    <section class="contato py-5" id="contato">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <h2>
+                    Entre em <span class="text-danger">
+                        contato
+                    </span>
+                </h2>
+
+                <p>
+                    Ficou interessado em algum veículo?
+                    Fale conosco.
+                </p>
+
+            </div>
+
+
+            <div class="row justify-content-center">
+
+                <div class="col-md-8">
+
+
+                    <div class="contato-item">
+
+                        <i class="bi bi-whatsapp"></i>
+
+                        <div>
+
+                            <strong>WhatsApp</strong>
+
+                            <br>
+
+                            (11) 99999-9999
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contato-item">
+
+                        <i class="bi bi-telephone"></i>
+
+                        <div>
+
+                            <strong>Telefone</strong>
+
+                            <br>
+
+                            (11) 3333-3333
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contato-item">
+
+                        <i class="bi bi-envelope"></i>
+
+                        <div>
+
+                            <strong>E-mail</strong>
+
+                            <br>
+
+                            contato@primemotors.com.br
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contato-item">
+
+                        <i class="bi bi-geo-alt"></i>
+
+                        <div>
+
+                            <strong>Endereço</strong>
+
+                            <br>
+
+                            Av. dos Automóveis, 1000 - São Paulo/SP
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        <p class="mb-0">
+
+            © 2026
+            <span>Prime Motors</span>.
+
+            Todos os direitos reservados.
+
+        </p>
+
+    </footer>
+
+
+    <!-- =========================
+         WHATSAPP FLUTUANTE
+    ========================= -->
+
+    <a href="https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os carros disponíveis."
+       target="_blank"
+       class="whatsapp"
+       title="Fale conosco pelo WhatsApp">
+
+        <i class="bi bi-whatsapp"></i>
+
+    </a>
+
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- =========================
+         JAVASCRIPT DO FILTRO
+    ========================= -->
+
+    <script>
+
+        function filtrarCarros() {
+
+            const categoria =
+                document.getElementById("filtroCategoria").value;
+
+            const busca =
+                document
+                .getElementById("busca")
+                .value
+                .toLowerCase()
+                .trim();
+
+            const carros =
+                document.querySelectorAll(".carro-item");
+
+            let encontrados = 0;
+
+
+            carros.forEach(function(carro) {
+
+                const categoriaCarro =
+                    carro.dataset.categoria;
+
+                const nomeCarro =
+                    carro.dataset.nome.toLowerCase();
+
+
+                const categoriaOk =
+                    categoria === "todos" ||
+                    categoriaCarro === categoria;
+
+
+                const buscaOk =
+                    nomeCarro.includes(busca);
+
+
+                if (categoriaOk && buscaOk) {
+
+                    carro.style.display = "";
+
+                    encontrados++;
+
+                } else {
+
+                    carro.style.display = "none";
+
+                }
+
+            });
+
+
+            const semResultados =
+                document.getElementById("semResultados");
+
+
+            if (encontrados === 0) {
+
+                semResultados.style.display = "block";
+
+            } else {
+
+                semResultados.style.display = "none";
+
+            }
+
+        }
+
+
+        /* Pesquisa também pressionando ENTER */
+
+        document
+        .getElementById("busca")
+        .addEventListener("keyup", function(event) {
+
+            if (event.key === "Enter") {
+
+                filtrarCarros();
+
+            }
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>

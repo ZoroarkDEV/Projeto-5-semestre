@@ -1,0 +1,257 @@
+﻿@{
+    Layout = "_Layout_Login";
+}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Prime Motors</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">             
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(rgba(5, 10, 20, 0.85), rgba(5, 10, 20, 0.95)), url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+        }
+
+        .login-card {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 20px;
+            padding: 40px 35px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: #e63946;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 15px;
+        }
+
+        .logo h1 {
+            font-weight: bold;
+            color: #0b132b;
+            margin-bottom: 5px;
+        }
+
+        .logo p {
+            color: #777;
+            margin: 0;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            padding: 13px;
+            border-radius: 10px;
+        }
+
+            .form-control:focus {
+                border-color: #e63946;
+                box-shadow: 0 0 0 0.2rem rgba(230, 57, 70, 0.15);
+            }
+
+        .btn-login {
+            background: #e63946;
+            border: none;
+            color: white;
+            padding: 13px;
+            border-radius: 10px;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+            .btn-login:hover {
+                background: #c92f3c;
+                transform: translateY(-2px);
+            }
+
+        .btn-voltar {
+            color: #0b132b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+            .btn-voltar:hover {
+                color: #e63946;
+            }
+
+        .erro {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .demo {
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 12px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #555;
+        }
+
+            .demo strong {
+                color: #0b132b;
+            }
+
+        media (max-width: 576px) {
+            .login-card
+
+        {
+            padding: 30px 20px;
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-container">
+
+        <div class="login-card">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    <i class="bi bi-car-front-fill"></i>
+                </div>
+
+                <h1>Prime Motors</h1>
+
+                <p>Área exclusiva para funcionários</p>
+
+            </div>
+
+            <form onsubmit="fazerLogin(event)">
+
+                <div class="mb-3">
+
+                    <label for="usuario" class="form-label">
+                        <i class="bi bi-person"></i>
+                        Usuário
+                    </label>
+
+                    <input type="text"
+                           id="usuario"
+                           class="form-control"
+                           placeholder="Digite seu usuário"
+                           required>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label for="senha" class="form-label">
+                        <i class="bi bi-lock"></i>
+                        Senha
+                    </label>
+
+                    <input type="password"
+                           id="senha"
+                           class="form-control"
+                           placeholder="Digite sua senha"
+                           required>
+
+                </div>
+
+                <div id="erro"
+                     class="alert alert-danger erro">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    Usuário ou senha incorretos.
+                </div>
+
+                <button type="submit"
+                        class="btn-login mt-3">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Entrar
+                </button>
+
+            </form>
+
+            <div class="demo">
+                <strong>Login para teste:</strong><br>
+                Usuário: <strong>admin</strong><br>
+                Senha: <strong>123456</strong>
+            </div>
+
+            <div class="text-center mt-4">
+
+                <a href="index.html" class="btn-voltar">
+                    <i class="bi bi-arrow-left"></i>
+                    Voltar para o site
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function fazerLogin(event) {
+
+            event.preventDefault();
+
+            const usuario = document.getElementById("usuario").value.trim();
+            const senha = document.getElementById("senha").value;
+
+            const erro = document.getElementById("erro");
+
+            if (usuario === "admin" && senha === "123456") {
+
+                // Guarda a informação de que o funcionário está logado
+                sessionStorage.setItem("primeMotorsLogado", "true");
+
+                // Vai para a área administrativa
+                window.location.href = "admin.html";
+
+            } else {
+
+                erro.style.display = "block";
+
+                document.getElementById("senha").value = "";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
